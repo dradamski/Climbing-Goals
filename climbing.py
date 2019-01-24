@@ -48,3 +48,22 @@ plt.ylabel('Times Climbing')
 plt.title('Climbing 100x in 2018')
 plt.legend()
 plt.show()
+
+# Sum the times I went climbing by month, and show it as a bar graph
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+          'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+         ]
+events = []
+for date in climbing_dates:
+    events.append(date.month)
+totals = []
+for i in range(1, 13):
+    totals.append(events.count(i))
+
+plt.bar(range(1,13), totals, tick_label = months, color='blue')
+plt.title('Monthly Climbing Totals')
+plt.xlabel('Month')
+plt.ylabel('Times Climbing')
+plt.axhline(100/12, dashes = (1,1), color = 'red')
+plt.text(9, 8.5, 'Ideal Average\nClimbs Per Month', color = 'red')
+plt.show()
