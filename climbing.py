@@ -31,6 +31,7 @@ for date in year_dates:
 
 
 # Graph cumulative climb count
+plt.style.use('fivethirtyeight')
 plt.subplot(121)
 plt.plot(year_dates, climb_count, label = 'My Progress')
 plt.plot([year_dates[0], year_dates[-2]], [0, 100], 
@@ -53,7 +54,6 @@ plt.ylabel('Times Climbing')
 plt.title('Climbing 100x in 2018')
 plt.legend()
 
-
 # Sum the times I went climbing by month, and show it as a bar graph
 events = []
 for date in climbing_dates:
@@ -61,13 +61,14 @@ for date in climbing_dates:
 totals = []
 for i in range(1, 13):
     totals.append(events.count(i))
-
+    
+months.pop() # Remove Jan 2019 from months list before bar graph
 # Graph histogram of monthly climbing totals
 plt.subplot(122)
-plt.bar(range(1,13), totals, tick_label = months.pop(), color='blue')
+plt.bar(range(1,13), totals, tick_label = months, color='blue')
 plt.title('Monthly Climbing Totals')
 plt.xlabel('Month')
 plt.ylabel('Times Climbing')
-plt.axhline(100/12, dashes = (1,1), color = 'red')
+plt.axhline(100/12, color = 'red')
 plt.text(9, 8.5, 'Ideal Average\nClimbs Per Month', color = 'red')
 plt.show()
