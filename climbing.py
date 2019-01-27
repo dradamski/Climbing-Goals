@@ -1,8 +1,8 @@
 # Import packages
-import pandas as pd
+
 from datetime import datetime
 import matplotlib.pyplot as plt
-
+import pandas as pd
 
 # Get data from csv and put dates into a list
 sheet = pd.read_csv('Climbing 100x - 2018.csv')
@@ -31,6 +31,7 @@ for date in year_dates:
 
 
 # Graph cumulative climb count
+plt.subplot(121)
 plt.plot(year_dates, climb_count, label = 'My Progress')
 plt.plot([year_dates[0], year_dates[-2]], [0, 100], 
          label = 'Climbing Rate to Realize Goal', color = 'red')
@@ -51,7 +52,6 @@ plt.xlabel('Date')
 plt.ylabel('Times Climbing')
 plt.title('Climbing 100x in 2018')
 plt.legend()
-plt.show()
 
 
 # Sum the times I went climbing by month, and show it as a bar graph
@@ -63,6 +63,7 @@ for i in range(1, 13):
     totals.append(events.count(i))
 
 # Graph histogram of monthly climbing totals
+plt.subplot(122)
 plt.bar(range(1,13), totals, tick_label = months.pop(), color='blue')
 plt.title('Monthly Climbing Totals')
 plt.xlabel('Month')
