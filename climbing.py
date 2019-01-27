@@ -1,7 +1,7 @@
 # Import packages
-import pandas as pd
 from datetime import datetime
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 # Get data from csv and put dates into a list
